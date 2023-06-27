@@ -116,16 +116,16 @@ def delivery_info():
     customer_details['suburb'] = not_blank(question)
     print (customer_details['suburb'])
 
-#pizza menu 
+#skincare menu 
 def menu():
-    number_pizza = 12
+    number_skincare = 12
 
-    for count in range (number_pizza):
+    for count in range (number_skincare):
         print("{} {} ${:.2f}".format(count+1, skincare_names[count], skincare_prices[count]))
 
 menu()
 
-#choose total number of pizzas - max 5
+#choose total number of skincare - max 5
 
 
 
@@ -134,7 +134,7 @@ menu()
 
 
 
-#pizza order - from menu - print each pizza ordered with cost
+#pizza order - from menu - print each skincare ordered with cost
 
 
 
