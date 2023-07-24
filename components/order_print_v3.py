@@ -6,7 +6,8 @@ order_cost = [6.00, 16.00, 40.00, 20.00]
 
 cust_details = {'name': 'Andrea', 'phone': '0123456', 'house': '40', 'street': 'Rocks', 'suburb': 'Flatbush'}
 
-print("\nCustomer Name:\n{}\nCustomer phone:\n{}\nCustomer House Number\n{} {} {}".format(cust_details['name'], cust_details['phone'], cust_details['house'], cust_details['street'], cust_details['suburb']))
+#print("\nCustomer Name:\n{}\nCustomer phone:\n{}\nCustomer House Number\n{} {} {}".format(cust_details['name'], cust_details['phone'], cust_details['house'], cust_details['street'], cust_details['suburb']))
+print(f"Customer Name: {cust_details['name']} \nCustomer Phone: {cust_details['phone']} \nCustomer Address: {cust_details['house']} {cust_details['street']} {cust_details['suburb']}")
 
 count = 0
 for item in order_list:
