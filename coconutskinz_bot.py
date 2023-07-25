@@ -22,7 +22,7 @@ order_list = []
 order_cost = []
 
 #customer details dictionary
-customer_details ={}
+customer_details = {}
 
 #validates inputs to check if they are blank
 def not_blank(question):
@@ -65,6 +65,7 @@ def welcome():
 
 #menu for click and collect or delivery
 def order_type ():
+    del_pick = ""
     print("Do you want your order delivered or would you like to do click and collect?")
 
     print("For click and collect enter 1")
@@ -76,20 +77,23 @@ def order_type ():
             if delivery >= 1 and delivery <= 2:
                 if delivery == 1:
                     print("Click and collect")
+                    del_pick = "pickup"
                     pickup_info()
                     break
 
                 elif delivery == 2:
                     print("Delivery")
                     delivery_info()
+                    del_pick = "delivery"
                     break
             else: 
                 print("The number must be 1 or 2")
         except ValueError:
             print("That is not a valid number")
             print("Please enter 1 or 2")
+    return del_pick
 
-#pickup information 
+#click and collect information 
 def pickup_info():
     question = ("Please enter your name ")
     customer_details['name'] = not_blank(question)
@@ -129,11 +133,6 @@ def menu():
     for count in range (number_skincare):
         print("{} {} ${:.2f}".format(count+1, skincare_names[count], skincare_prices[count]))
 
-menu()
-
-#choose total number of skincare 
-
-
 #skincare order - from menu - print each skincare ordered with cost
 def order_skincare():
 
@@ -151,34 +150,48 @@ def order_skincare():
             print("That is not a valid number")
             print("Please enter a number between 1 and 12.")
 
-    # choose skincare from the menu
 
+# choose skincare from the menu
     for item in range(num_skincare):
-        while True:
-            try:
-                skincare_ordered = int(input("Please choose your skincare by entering the number of the skincare from the menu: "))
-                if 1 <= skincare_ordered <= 12:
-                    break
-                else:
-                    print("Your order must be between 1 and 12.")
-            except ValueError:
-                print("That is not a valid number")
-                print("Please enter a number between 1 and 12.")
+                while True:
+                    try:
+                        skincare_ordered = int(input("Please choose your skincare by entering the number of the skincare from the menu: "))
+                        if skincare_ordered >= 1 and skincare_ordered <= 12:
+                                break
+                        else:
+                            print("Your order must be between 1 and 12.")
+                    except ValueError:
+                        print("That is not a valid number")
+                        print("Please enter a number between 1 and 12.")
 
-        skincare_ordered -= 1
-        order_list.append(skincare_names[skincare_ordered])
-        order_cost.append(skincare_prices[skincare_ordered])
-        print("{} ${:.2f}".format(skincare_names[skincare_ordered], skincare_prices[skincare_ordered]))
-        num_skincare -= 1
-
+                skincare_ordered -= 1
+                order_list.append(skincare_names[skincare_ordered])
+                order_cost.append(skincare_prices[skincare_ordered])
+                print("{} ${:.2f}".format(skincare_names[skincare_ordered], skincare_prices[skincare_ordered]))
+                num_skincare -= 1
 
 
 
 #print order out - including if order is delivering or pickup and names and price of each skincare - total cost including any delivery charge 
-
-
-
-
+def print_order(del_pick):
+    print()
+    total_cost = sum(order_cost)
+    print("Customer Details")
+    if del_pick == "pickup":
+        print("Your Order is for Click and Collect")
+        print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']}")
+    elif del_pick == "delivery":
+        print("Your Order is for Delivery")
+        print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']} \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
+    print()
+    print("Order Details")
+    count = 0
+    for item in order_list:
+        print("Ordered: {} ${:.2f}".format(item, order_cost[count]))
+        count = count + 1
+    print()
+    print("Total Order Cost")
+    print(f"${total_cost:.2f}")
 
 #ability to cancel or proceed with order
 
@@ -193,17 +206,16 @@ def order_skincare():
 
 
 
-#main function 
 def main():
     '''
     Purpose: To run all functions
-    Pairameters: None
+    Parameters: None
     Returns: None
     '''
     welcome()
-    order_type()
+    del_pick = order_type()
     menu()
     order_skincare()
-    
+    print_order(del_pick)
 
 main()
