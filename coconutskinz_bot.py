@@ -83,6 +83,8 @@ def order_type ():
 
                 elif delivery == 2:
                     print("Delivery")
+                    order_list.append("Delivery Charge")
+                    order_cost.append(9)
                     delivery_info()
                     del_pick = "delivery"
                     break
