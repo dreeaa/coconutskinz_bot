@@ -35,6 +35,8 @@ def not_blank(question):
         else: 
             print("This cannot be blank")
 
+
+
 #welcome message with random name 
 def welcome():
     '''
@@ -46,7 +48,7 @@ def welcome():
     num = randint(0,9)
     name = (names[num])
 
-    #logo
+    #the logo for coconutskinz
     print("""
 
                                                      .-') _             .-') _     .-')   .-. .-')               .-') _    .-') _  
