@@ -2,6 +2,7 @@
 #bugs - phone number input allows letters 
 #     - name input allows numbers 
 
+import sys
 import random
 from random import randint
 
@@ -191,20 +192,73 @@ def print_order(del_pick):
     for item in order_list:
         print("Ordered: {} ${:.2f}".format(item, order_cost[count]))
         count = count + 1
+    if del_pick == "delivery":
+        if len(order_list) >= 5:
+            print("As you have ordered 5 or more skincare products, your order will be delivered for free.")
+        elif len(order_list) < 5:
+            print("As you have ordered less than 5 skincare products, you will be charged a $9.00 delivery fee.")
+            total_cost = total_cost + 9
+
     print()
     print("Total Order Cost")
     print(f"${total_cost:.2f}")
 
 #ability to cancel or proceed with order
+def confirm_cancel():
+    print("Please Confirm Your Order")
+    print("To confirm your order, please enter 1")
+    print("To cancel your order, please enter 2")
 
+    while True:
+        try:
+            confirm = int(input("Please enter a number "))
+            if confirm >= 1 and confirm <= 2:
+                if confirm == 1:
+                    print("Ordered Confirmed")
+                    print("Your order has been sent to our team and will be sent to you as soon as possible!")
+                    new_exit()
+                    break
 
-
-
+                elif confirm == 2:
+                    print("Your order has been Cancelled")
+                    print("You can restart your order or exit the BOT")
+                    break
+            else: 
+                print("The number must be 1 or 2")
+        except ValueError:
+            print("That is not a valid number")
+            print("Please enter 1 or 2")
 
 #option for new order or to exit
+def new_exit():
+    print("Do you want to start another order or exit?")
+    print("To start another order, please enter 1")
+    print("To exit the bot, please enter 2")
 
+    while True:
+        try:
+            confirm = int(input("Please enter a number "))
+            if confirm >= 1 and confirm <= 2:
+                if confirm == 1:
+                    print("New Order")
+                    order_list.clear()
+                    order_cost.clear()
+                    customer_details.clear()
+                    main()
+                    break
 
-
+                elif confirm == 2:
+                    print("Exit")
+                    order_list.clear()
+                    order_cost.clear()
+                    customer_details.clear()
+                    sys.exit()
+                    break
+            else: 
+                print("The number must be 1 or 2")
+        except ValueError:
+            print("That is not a valid number")
+            print("Please enter 1 or 2")
 
 
 
@@ -219,5 +273,6 @@ def main():
     menu()
     order_skincare()
     print_order(del_pick)
+    confirm_cancel()
 
 main()
