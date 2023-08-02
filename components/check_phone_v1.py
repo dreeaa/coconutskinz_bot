@@ -1,7 +1,7 @@
 question = ("Please enter your phone number ")
 
-ph_low = 7
-ph_high = 10
+PH_LOW = 7
+PH_HIGH = 10
 
 while True:
     try:
@@ -11,7 +11,7 @@ while True:
         while test_num > 0:
             test_num = test_num//10
             count = count+1
-        if count >= ph_low and count <= ph_high:
+        if count >= PH_LOW and count <= PH_HIGH:
             print(num)
             break
         else:
