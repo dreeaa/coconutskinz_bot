@@ -157,7 +157,7 @@ def delivery_info():
     customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
     print (customer_details['phone'])
 
-    question = ("Please enter your street suffix ")
+    question = ("Please enter your house number ")
     customer_details['house'] = not_blank(question)
     print (customer_details['house'])
 
@@ -243,7 +243,7 @@ def confirm_cancel():
 
     confirm = valid_int(LOW, HIGH, question)
     if confirm == 1:
-            print("Ordered Confirmed")
+            print("Order Confirmed")
             print("Your order has been sent to our team and will be sent to you as soon as possible!")
             new_exit()
 
