@@ -6,8 +6,8 @@ from random import randint
 #constants
 LOW = 1
 HIGH = 2
-ph_low = 7
-ph_high = 10
+PH_LOW = 7
+PH_HIGH = 10
 
 #list of random names
 names = ["Romy", "Sookie", "Zac", "Aliya", "Carl", "Sohpie", "April", "Mia", "Ethan", "Tanya"]
@@ -64,7 +64,7 @@ def valid_int(LOW, HIGH, question):
             print("That is not a valid number")
 
 #validates inputs to check if they are an integer with 7 to 10 digits
-def check_phone(question, ph_low, ph_high):
+def check_phone(question, PH_LOW, PH_HIGH):
     while True:
         try:
             num = int(input(question))
@@ -73,7 +73,7 @@ def check_phone(question, ph_low, ph_high):
             while test_num > 0:
                 test_num = test_num//10
                 count = count+1
-            if count >= ph_low and count <= ph_high:
+            if count >= PH_LOW and count <= PH_HIGH:
                 return num
             else:
                 print("NZ phone numbers have between 7 and 10 digits ")
@@ -142,7 +142,7 @@ def pickup_info():
     #print (customer_details['name'])
 
     question = ("Please enter your phone number ")
-    customer_details['phone'] = check_phone(question, ph_low, ph_high)
+    customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
     #print (customer_details['phone'])
     print(customer_details)
 
@@ -153,7 +153,7 @@ def delivery_info():
     print (customer_details['name'])
 
     question = ("Please enter your phone number ")
-    customer_details['phone'] = check_phone(question, ph_low, ph_high)
+    customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
     print (customer_details['phone'])
 
     question = ("Please enter your house number ")
