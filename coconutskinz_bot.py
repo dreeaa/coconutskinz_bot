@@ -66,7 +66,7 @@ def check_phone(question, PH_LOW, PH_HIGH):
             count = 0
             while test_num > 0:
                 test_num = test_num//10
-                count = count+1
+                count = count + 1
             if count >= PH_LOW and count <= PH_HIGH:
                 return num
             else:
