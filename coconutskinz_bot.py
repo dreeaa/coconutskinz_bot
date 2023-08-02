@@ -157,7 +157,7 @@ def delivery_info():
     customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
     print (customer_details['phone'])
 
-    question = ("Please enter your house number ")
+    question = ("Please enter your street suffix ")
     customer_details['house'] = not_blank(question)
     print (customer_details['house'])
 
