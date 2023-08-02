@@ -57,6 +57,23 @@ def valid_int(LOW, HIGH, question):
         except ValueError:
             print("That is not a valid number")
 
+#validates inputs to check if they are an integer with 7 to 10 digits
+def check_phone(question, PH_LOW, PH_HIGH):
+    while True:
+        try:
+            num = int(input(question))
+            test_num = num
+            count = 0
+            while test_num > 0:
+                test_num = test_num//10
+                count = count+1
+            if count >= PH_LOW and count <= PH_HIGH:
+                return num
+            else:
+                print("NZ phone numbers have between 7 and 10 digits ")
+        except ValueError:
+            print("Please enter a number ")
+
 
 #welcome message with random name 
 def welcome():
