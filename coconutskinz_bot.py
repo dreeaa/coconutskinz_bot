@@ -110,6 +110,7 @@ def welcome():
     print ("*** Welcome to CoconutSkinz! ***")
     print ("*** My name is", name, "***")
     print ("*** I will be here to help you order the skincare you need! ***")
+    print ("*** Please note that there is a $9 delivery fee when items are less than 5 ***")
 
 #menu for click and collect or delivery
 def order_type():
@@ -118,8 +119,8 @@ def order_type():
     HIGH = 2
     question = (f"Enter a number between {LOW} and {HIGH} ")
     print("Do you want your order delivered or would you like to do click and collect? ")
-    print("For click and collect enter 1 ")
-    print("For delivery enter 2 ")
+    print(" For click and collect enter 1 ")
+    print(" For delivery enter 2 ")
 
     delivery = valid_int(LOW, HIGH, question)
     if delivery == 1:
