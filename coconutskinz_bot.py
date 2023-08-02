@@ -135,7 +135,7 @@ def pickup_info():
     #print (customer_details['name'])
 
     question = ("Please enter your phone number ")
-    customer_details['phone'] = not_blank(question)
+    customer_details['phone'] = check_phone(question)
     #print (customer_details['phone'])
     print(customer_details)
 
@@ -146,7 +146,7 @@ def delivery_info():
     print (customer_details['name'])
 
     question = ("Please enter your phone number ")
-    customer_details['phone'] = not_blank(question)
+    customer_details['phone'] = check_phone(question)
     print (customer_details['phone'])
 
     question = ("Please enter your house number ")
