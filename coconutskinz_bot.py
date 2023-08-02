@@ -35,6 +35,19 @@ def not_blank(question):
         else: 
             print("This cannot be blank")
 
+#validates inputs to check if they are an integer
+def valid_int(LOW, HIGH, question):
+
+    while True: 
+        try:
+            num = int(input(question))
+            if num >= LOW and num <= HIGH:
+                return num
+            else: 
+                print(f"Number must be between {LOW} and {HIGH}")
+
+        except ValueError:
+            print("That is not a valid number")
 
 
 #welcome message with random name 
@@ -67,36 +80,28 @@ def welcome():
     print ("*** I will be here to help you order the skincare you need! ***")
 
 #menu for click and collect or delivery
-def order_type ():
+def order_type():
     del_pick = ""
-    print("Do you want your order delivered or would you like to do click and collect?")
+    LOW = 1
+    HIGH = 2
+    question = (f"Enter a number between {LOW} and {HIGH} ")
+    print("Do you want your order delivered or would you like to do click and collect? ")
+    print("For click and collect enter 1 ")
+    print("For delivery enter 2 ")
 
-    print("For click and collect enter 1")
-    print("For delivery enter 2")
+    delivery = valid_int(LOW, HIGH, question)
+    if delivery == 1:
+        print("Click and collect")
+        del_pick = "pickup"
+        pickup_info()
 
-    while True:
-        try:
-            delivery = int(input("Please enter a number "))
-            if delivery >= 1 and delivery <= 2:
-                if delivery == 1:
-                    print("Click and collect")
-                    del_pick = "pickup"
-                    pickup_info()
-                    break
+    elif delivery == 2:
+        print("Delivery")
+        del_pick = "delivery"
+        delivery_info()
 
-                elif delivery == 2:
-                    print("Delivery")
-                    order_list.append("Delivery Charge")
-                    order_cost.append(9)
-                    delivery_info()
-                    del_pick = "delivery"
-                    break
-            else: 
-                print("The number must be 1 or 2")
-        except ValueError:
-            print("That is not a valid number")
-            print("Please enter 1 or 2")
     return del_pick
+
 
 #click and collect information 
 def pickup_info():
@@ -127,7 +132,7 @@ def delivery_info():
     customer_details['street'] = not_blank(question)
     print (customer_details['street'])
 
-    question = ("Please enter your suburb")
+    question = ("Please enter your suburb ")
     customer_details['suburb'] = not_blank(question)
     print (customer_details['suburb'])
 
@@ -143,41 +148,29 @@ def order_skincare():
 
 # ask for the total number of skincare for the order
     num_skincare = 0
-
-    while True:
-        try:
-            num_skincare = int(input("How much skincare do you want to order? "))
-            if 1 <= num_skincare <= 12:
-                break
-            else:
-                print("Your order must be between 1 and 12.")
-        except ValueError:
-            print("That is not a valid number")
-            print("Please enter a number between 1 and 12.")
-
+    NUM_LOW = 1 
+    NUM_HIGH = 12
+    question = (f"Enter a number between {NUM_LOW} and {NUM_HIGH} ")
+    print("How many skincare products would you like to order? ")
+    num_skincare = valid_int(NUM_LOW, NUM_HIGH, question)
 
 # choose skincare from the menu
     for item in range(num_skincare):
-                while True:
-                    try:
-                        skincare_ordered = int(input("Please choose your skincare by entering the number of the skincare from the menu: "))
-                        if skincare_ordered >= 1 and skincare_ordered <= 12:
-                                break
-                        else:
-                            print("Your order must be between 1 and 12.")
-                    except ValueError:
-                        print("That is not a valid number")
-                        print("Please enter a number between 1 and 12.")
+        while num_skincare > 0:
+            print("Please choose your skincare by entering the number of the skincare from the menu: ")
+            question = (f"Enter a number between {NUM_LOW} and {NUM_HIGH} ")
 
-                skincare_ordered -= 1
-                order_list.append(skincare_names[skincare_ordered])
-                order_cost.append(skincare_prices[skincare_ordered])
-                print("{} ${:.2f}".format(skincare_names[skincare_ordered], skincare_prices[skincare_ordered]))
-                num_skincare -= 1
+
+            skincare_ordered = valid_int(NUM_LOW, NUM_HIGH, question)
+            skincare_ordered -= 1
+            order_list.append(skincare_names[skincare_ordered])
+            order_cost.append(skincare_prices[skincare_ordered])
+            print("{} ${:.2f}".format(skincare_names[skincare_ordered], skincare_prices[skincare_ordered]))
+            num_skincare -= 1
 
 
 
-#print order out - including if order is delivering or pickup and names and price of each skincare - total cost including any delivery charge 
+#print order out - including if order is delivering or click and collect and names and price of each skincare - total cost including any delivery charge 
 def print_order(del_pick):
     print()
     total_cost = sum(order_cost)
@@ -207,61 +200,49 @@ def print_order(del_pick):
 
 #ability to cancel or proceed with order
 def confirm_cancel():
+    LOW = 1
+    HIGH = 2
+    question = (f"Enter a number between {LOW} and {HIGH} ")
+    
     print("Please Confirm Your Order")
-    print("To confirm your order, please enter 1")
-    print("To cancel your order, please enter 2")
+    print("To confirm your order, please enter 1 ")
+    print("To cancel your order, please enter 2 ")
 
-    while True:
-        try:
-            confirm = int(input("Please enter a number "))
-            if confirm >= 1 and confirm <= 2:
-                if confirm == 1:
-                    print("Ordered Confirmed")
-                    print("Your order has been sent to our team and will be sent to you as soon as possible!")
-                    new_exit()
-                    break
+    confirm = valid_int(LOW, HIGH, question)
+    if confirm == 1:
+            print("Ordered Confirmed")
+            print("Your order has been sent to our team and will be sent to you as soon as possible!")
+            new_exit()
 
-                elif confirm == 2:
-                    print("Your order has been Cancelled")
-                    print("You can restart your order or exit the BOT")
-                    break
-            else: 
-                print("The number must be 1 or 2")
-        except ValueError:
-            print("That is not a valid number")
-            print("Please enter 1 or 2")
+    elif confirm == 2:
+            print("Your order has been Cancelled")
+            print("You can restart your order or exit the BOT")
+            new_exit()
 
 #option for new order or to exit
 def new_exit():
-    print("Do you want to start another order or exit?")
-    print("To start another order, please enter 1")
-    print("To exit the bot, please enter 2")
+    LOW = 1
+    HIGH = 2
+    question = (f"Enter a number between {LOW} and {HIGH} ")
+    
+    print("Do you want to start another order or exit? ")
+    print("To start another order, please enter 1 ")
+    print("To exit the bot, please enter 2 ")
 
-    while True:
-        try:
-            confirm = int(input("Please enter a number "))
-            if confirm >= 1 and confirm <= 2:
-                if confirm == 1:
-                    print("New Order")
-                    order_list.clear()
-                    order_cost.clear()
-                    customer_details.clear()
-                    main()
-                    break
+    confirm = valid_int(LOW, HIGH, question)
+    if confirm == 1:
+        print("New Order")
+        order_list.clear()
+        order_cost.clear()
+        customer_details.clear()
+        main()
 
-                elif confirm == 2:
-                    print("Exit")
-                    order_list.clear()
-                    order_cost.clear()
-                    customer_details.clear()
-                    sys.exit()
-                    break
-            else: 
-                print("The number must be 1 or 2")
-        except ValueError:
-            print("That is not a valid number")
-            print("Please enter 1 or 2")
-
+    elif confirm == 2:
+        print("Exit")
+        order_list.clear()
+        order_cost.clear()
+        customer_details.clear()
+        sys.exit()
 
 
 def main():
