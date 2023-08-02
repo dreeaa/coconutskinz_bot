@@ -1,7 +1,4 @@
 #skincare bot program
-#bugs - phone number input allows letters 
-#     - name input allows numbers 
-
 import sys
 import random
 from random import randint
@@ -34,6 +31,17 @@ def not_blank(question):
             return response.title()
         else: 
             print("This cannot be blank")
+
+#Validates to check if they are a string
+def check_string(question):
+    while True:
+        response = input(question)
+        x = response.isalpha()
+
+        if x == False:
+            print("input must only contain letters")
+        else:
+            return (response.title())
 
 #validates inputs to check if they are an integer
 def valid_int(LOW, HIGH, question):
@@ -106,7 +114,7 @@ def order_type():
 #click and collect information 
 def pickup_info():
     question = ("Please enter your name ")
-    customer_details['name'] = not_blank(question)
+    customer_details['name'] = check_string(question)
     #print (customer_details['name'])
 
     question = ("Please enter your phone number ")
@@ -117,7 +125,7 @@ def pickup_info():
 #delivery information - name address and phone
 def delivery_info():
     question = ("Please enter your name ")
-    customer_details['name'] = not_blank(question)
+    customer_details['name'] = check_string(question)
     print (customer_details['name'])
 
     question = ("Please enter your phone number ")
@@ -129,11 +137,11 @@ def delivery_info():
     print (customer_details['house'])
 
     question = ("Please enter your street name ")
-    customer_details['street'] = not_blank(question)
+    customer_details['street'] = check_string(question)
     print (customer_details['street'])
 
     question = ("Please enter your suburb ")
-    customer_details['suburb'] = not_blank(question)
+    customer_details['suburb'] = check_string(question)
     print (customer_details['suburb'])
 
 #skincare menu 
