@@ -244,12 +244,12 @@ def confirm_cancel():
     confirm = valid_int(LOW, HIGH, question)
     if confirm == 1:
             print("Order Confirmed")
-            print("Your order has been sent to our team and will be sent to you as soon as possible!")
+            print("Your order has been sent to our team and will be delivered to you as soon as possible!")
             new_exit()
 
     elif confirm == 2:
             print("Your order has been Cancelled")
-            print("You can restart your order or exit the BOT")
+            print("You may restart your order or exit the BOT")
             new_exit()
 
 #option for new order or to exit
