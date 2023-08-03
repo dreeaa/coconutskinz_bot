@@ -190,7 +190,7 @@ def order_skincare():
 # choose skincare from the menu
     for item in range(num_skincare):
         while num_skincare > 0:
-            print("Please choose your skincare by entering the number of the skincare from the menu: ")
+            print("Please choose your skincare product by entering the number of the skincare from the menu: ")
             question = (f"Enter a number between {NUM_LOW} and {NUM_HIGH} ")
 
 
