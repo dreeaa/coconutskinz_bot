@@ -337,16 +337,30 @@ def new_exit():
         sys.exit()
 
 def main():
-    '''
-    Purpose: To run all functions
-    Parameters: None
-    Returns: None
-    '''
+    # Function Purpose: To run all functions in the order of the skincare bot's workflow.
+    # Parameters: None
+    # Returns: None
+
+    # Call the 'welcome' function to display the welcome message with a random name.
     welcome()
+
+    # Call the 'order_type' function to prompt the user for the type of order (delivery or click and collect).
+    # The 'del_pick' variable will store the user's choice ('pickup' or 'delivery').
     del_pick = order_type()
+
+    # Call the 'menu' function to display the available skincare products with their names and prices.
     menu()
+
+    # Call the 'order_skincare' function to let the user order skincare products from the menu.
+    # The user will choose the number of skincare products and their selections will be stored in 'order_list' and 'order_cost' lists.
     order_skincare()
+
+    # Call the 'print_order' function to print out the order details, including customer information, ordered skincare products, and the total cost.
+    # The 'del_pick' variable is passed to determine if the order is for delivery or click and collect.
     print_order(del_pick)
+
+    # Call the 'confirm_cancel' function to prompt the user to confirm or cancel the order.
     confirm_cancel()
 
+# Call the 'main' function to start the execution of the skincare bot program.
 main()
