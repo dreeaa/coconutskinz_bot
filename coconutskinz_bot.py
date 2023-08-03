@@ -222,7 +222,7 @@ def print_order(del_pick):
         count = count + 1
     if del_pick == "delivery":
         if len(order_list) >= 5:
-            print("As you have ordered 5 or more skincare products, your order will be delivered for free.")
+            print("As you have ordered 5 or more skincare products, your order will be delivered for to you free.")
         elif len(order_list) < 5:
             print("As you have ordered less than 5 skincare products, you will be charged a $9.00 delivery fee.")
             total_cost = total_cost + 9
