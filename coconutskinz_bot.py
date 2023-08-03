@@ -80,21 +80,19 @@ def check_phone(question, PH_LOW, PH_HIGH):
         except ValueError:
             print("Please enter a number ")  # If the input is not a valid integer, prints an error message.
 
-
-
-
 #welcome message with random name 
 def welcome():
     '''
     Purpose: To generate a random name from the list and print out
     a welcome message
-    Pairameters: None
+    Parameters: None
     Returns: None
     '''
-    num = randint(0,9)
-    name = (names[num])
 
-    #the logo for coconutskinz
+    num = randint(0, 9)  # Generates a random number between 0 and 9 (inclusive) and stores it in the variable 'num'.
+    name = (names[num])  # Fetches a random name from the 'names' list using the random number 'num' as an index and stores it in the variable 'name'.
+
+    #the logo for coconutskinz - Prints the logo of CoconutSkinz using a multi-line string.
     print("""
 
                                                      .-') _             .-') _     .-')   .-. .-')               .-') _    .-') _  
@@ -108,10 +106,12 @@ def welcome():
    `-----'      `-----'    `-----'      `-----' `--'  `--'   `-----'      `--'    `-----' `--' '--'  `--'   `--'  `--'  `--------' 
 
     """)
-    print ("*** Welcome to CoconutSkinz! ***")
-    print ("*** My name is", name, "***")
-    print ("*** I will be here to help you order the skincare you need! ***")
-    print ("*** Please note that there is a $9 delivery fee when items are less than 5 ***")
+
+    print ("*** Welcome to CoconutSkinz! ***")  # Prints a welcome message.
+    print ("*** My name is", name, "***")  # Prints a message introducing the bot with the randomly selected name.
+    print ("*** I will be here to help you order the skincare you need! ***")  # Prints a message indicating the purpose of the bot.
+    print ("*** Please note that there is a $9 delivery fee when items are less than 5 ***")  # Prints a note about the delivery fee for orders with less than 5 items.
+
 
 #menu for click and collect or delivery
 def order_type():
