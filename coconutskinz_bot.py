@@ -259,8 +259,8 @@ def new_exit():
     question = (f"Enter a number between {LOW} and {HIGH} ")
     
     print("Do you want to start another order or exit? ")
-    print("To start another order, please enter 1 ")
-    print("To exit the bot, please enter 2 ")
+    print("  To start another order, please enter 1 ")
+    print("  To exit the bot, please enter 2 ")
 
     confirm = valid_int(LOW, HIGH, question)
     if confirm == 1:
