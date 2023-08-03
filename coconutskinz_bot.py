@@ -268,50 +268,73 @@ def print_order(del_pick):
 
 #ability to cancel or proceed with order
 def confirm_cancel():
+    # Define constants for user input validation.
     LOW = 1
     HIGH = 2
+    # Create a question for user input.
     question = (f"Enter a number between {LOW} and {HIGH} ")
     
+    # Print messages to ask the user to confirm or cancel the order.
     print("Please Confirm Your Order")
     print("To confirm your order, please enter 1 ")
     print("To cancel your order, please enter 2 ")
 
+    # Get user input for confirmation or cancellation and validate it as an integer between LOW and HIGH.
     confirm = valid_int(LOW, HIGH, question)
+
+    # Check if the user confirmed the order (chose 1).
     if confirm == 1:
-            print("Order Confirmed")
-            print("Your order has been sent to our team and will be delivered to you as soon as possible!")
-            new_exit()
+        # Print a message confirming the order.
+        print("Order Confirmed")
+        print("Your order has been sent to our team and will be delivered to you as soon as possible!")
+        # Call the new_exit function to offer the option to start a new order or exit the bot.
+        new_exit()
 
+    # Check if the user canceled the order (chose 2).
     elif confirm == 2:
-            print("Your order has been Cancelled")
-            print("You may restart your order or exit the BOT")
-            new_exit()
+        # Print a message indicating that the order has been canceled.
+        print("Your order has been Cancelled")
+        print("You may restart your order or exit the BOT")
+        # Call the new_exit function to offer the option to start a new order or exit the bot.
+        new_exit()
 
-#option for new order or to exit
+
 def new_exit():
+    # Define constants for user input validation.
     LOW = 1
     HIGH = 2
+    # Create a question for user input.
     question = (f"Enter a number between {LOW} and {HIGH} ")
     
+    # Print messages to ask the user if they want to start another order or exit the bot.
     print("Do you want to start another order or exit? ")
     print("  To start another order, please enter 1 ")
     print("  To exit the bot, please enter 2 ")
 
+    # Get user input for starting a new order or exiting the bot and validate it as an integer between LOW and HIGH.
     confirm = valid_int(LOW, HIGH, question)
+
+    # Check if the user wants to start a new order (chose 1).
     if confirm == 1:
+        # Print a message indicating the choice to start a new order.
         print("New Order")
+        # Clear the order_list, order_cost, and customer_details lists/dictionary for a fresh order.
         order_list.clear()
         order_cost.clear()
         customer_details.clear()
+        # Call the main function to start a new order process.
         main()
 
+    # Check if the user wants to exit the bot (chose 2).
     elif confirm == 2:
+        # Print a message indicating the choice to exit the bot.
         print("Exit")
+        # Clear the order_list, order_cost, and customer_details lists/dictionary.
         order_list.clear()
         order_cost.clear()
         customer_details.clear()
+        # Exit the bot.
         sys.exit()
-
 
 def main():
     '''
