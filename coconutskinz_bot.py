@@ -220,31 +220,51 @@ def order_skincare():
 
 #print order out - including if order is delivering or click and collect and names and price of each skincare - total cost including any delivery charge 
 def print_order(del_pick):
+    # Print a blank line for better readability.
     print()
+    # Calculate the total cost of the order by summing up the prices of all the skincare products.
     total_cost = sum(order_cost)
+    # Print "Customer Details" section header.
     print("Customer Details")
+    # Check if the order is for click and collect.
     if del_pick == "pickup":
         print("Your Order is for Click and Collect")
+        # Print customer name and phone number for click and collect.
         print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']}")
+    # Check if the order is for delivery.
     elif del_pick == "delivery":
         print("Your Order is for Delivery")
+        # Print customer name, phone number, house number, street name, and suburb for delivery.
         print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']} \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
+    # Print a blank line for better readability.
     print()
+    # Print "Order Details" section header.
     print("Order Details")
-    count = 0
-    for item in order_list:
+    count = 0  # Initialize a counter for iterating through the ordered skincare products.
+    for item in order_list:  # Iterate through each ordered skincare product.
+        # Print the name and price of the ordered skincare product in the format "Ordered: Name $Price".
         print("Ordered: {} ${:.2f}".format(item, order_cost[count]))
-        count = count + 1
-    if del_pick == "delivery":
+        count = count + 1  # Increment the counter for the next iteration.
+    if del_pick == "delivery":  # Check if the order is for delivery.
+        # Check if the number of ordered skincare products is greater than or equal to 5.
         if len(order_list) >= 5:
-            print("As you have ordered 5 or more skincare products, your order will be delivered for to you free.")
+            # Print a message indicating that delivery is free for orders with 5 or more products.
+            print("As you have ordered 5 or more skincare products, your order will be delivered to you for free.")
+        # Check if the number of ordered skincare products is less than 5.
         elif len(order_list) < 5:
+            # Print a message indicating the delivery fee of $9.00 for orders with less than 5 products.
             print("As you have ordered less than 5 skincare products, you will be charged a $9.00 delivery fee.")
+            # Add the delivery fee to the total cost of the order.
             total_cost = total_cost + 9
 
+    # Print a blank line for better readability.
     print()
+    # Print the "Total Order Cost" section header.
     print("Total Order Cost")
+    # Print the total cost of the order in the format "$TotalCost".
+    # The format {:.2f} ensures that the total cost is displayed with two decimal places.
     print(f"${total_cost:.2f}")
+
 
 #ability to cancel or proceed with order
 def confirm_cancel():
