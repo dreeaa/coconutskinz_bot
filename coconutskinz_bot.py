@@ -148,23 +148,24 @@ def pickup_info():
     print(customer_details)
 
 #delivery information - name address and phone
+#customers name
 def delivery_info():
     question = ("Please enter your name ")
     customer_details['name'] = check_string(question)
     print (customer_details['name'])
-
+#customers phone number
     question = ("Please enter your phone number ")
     customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
     print (customer_details['phone'])
-
+#customers address
     question = ("Please enter your house number ")
     customer_details['house'] = not_blank(question)
     print (customer_details['house'])
-
+#customers address
     question = ("Please enter your street name ")
     customer_details['street'] = check_string(question)
     print (customer_details['street'])
-
+#customers address
     question = ("Please enter your suburb ")
     customer_details['suburb'] = check_string(question)
     print (customer_details['suburb'])
