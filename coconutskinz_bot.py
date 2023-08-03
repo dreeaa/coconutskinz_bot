@@ -110,7 +110,7 @@ def welcome():
     print ("*** Welcome to CoconutSkinz! ***")  # Prints a welcome message.
     print ("*** My name is", name, "***")  # Prints a message introducing the bot with the randomly selected name.
     print ("*** I will be here to help you order the skincare you need! ***")  # Prints a message indicating the purpose of the bot.
-    print ("*** Please note that there is a $9 delivery fee when items are less than 5 ***")  # Prints a note about the delivery fee for orders with less than 5 items.
+    print ("\n*** Please note that there is a $9 delivery fee when items are less than 5 ***")  # Prints a note about the delivery fee for orders with less than 5 items.
 
 
 #menu for click and collect or delivery
@@ -122,7 +122,7 @@ def order_type():
 
     question = (f"Enter a number between {LOW} and {HIGH} ")  # Prompt message to instruct the user to enter a number between 'LOW' and 'HIGH'.
 
-    print("Do you want your order delivered or would you like to do click and collect? ")  # Prints a message to ask the user about their delivery preference.
+    print("\nDo you want your order delivered or would you like to do click and collect? ")  # Prints a message to ask the user about their delivery preference.
     print("  For click and collect enter 1 ")  # Prints the option for click and collect.
     print("  For delivery enter 2 ")  # Prints the option for delivery.
 
@@ -147,7 +147,7 @@ def pickup_info():
     customer_details['name'] = check_string(question)  # Calls the 'check_string' function to get and validate the user's name. The name is stored in the 'customer_details' dictionary under the key 'name'.
     #print (customer_details['name'])  # Uncommenting this line will print the user's name, but it seems to be commented out for debugging purposes.
 
-    question = ("Please enter your phone number ")  # Prompt message to instruct the user to enter their phone number.
+    question = ("\nPlease enter your phone number ")  # Prompt message to instruct the user to enter their phone number.
     customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)  # Calls the 'check_phone' function to get and validate the user's phone number. The phone number is stored in the 'customer_details' dictionary under the key 'phone'.
     #print (customer_details['phone'])  # Uncommenting this line will print the user's phone number, but it seems to be commented out for debugging purposes.
     print(customer_details)  # Prints the 'customer_details' dictionary containing the user's name and phone number.
@@ -160,22 +160,22 @@ def delivery_info():
     print (customer_details['name'])  # Prints the user's name.
 
 #customers phone number
-    question = ("Please enter your phone number ")  # Prompt message to instruct the user to enter their phone number.
+    question = ("\nPlease enter your phone number ")  # Prompt message to instruct the user to enter their phone number.
     customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)  # Calls the 'check_phone' function to get and validate the user's phone number. The phone number is stored in the 'customer_details' dictionary under the key 'phone'.
     print (customer_details['phone'])  # Prints the user's phone number.
 
 #customers address
-    question = ("Please enter your house number ")  # Prompt message to instruct the user to enter their house number.
+    question = ("\nPlease enter your house number ")  # Prompt message to instruct the user to enter their house number.
     customer_details['house'] = not_blank(question)  # Calls the 'not_blank' function to get and validate the user's house number. The house number is stored in the 'customer_details' dictionary under the key 'house'.
     print (customer_details['house'])  # Prints the user's house number.
 
 #customers address
-    question = ("Please enter your street name ")  # Prompt message to instruct the user to enter their street name.
+    question = ("\nPlease enter your street name ")  # Prompt message to instruct the user to enter their street name.
     customer_details['street'] = check_string(question)  # Calls the 'check_string' function to get and validate the user's street name. The street name is stored in the 'customer_details' dictionary under the key 'street'.
     print (customer_details['street'])  # Prints the user's street name.
 
 #customers address
-    question = ("Please enter your suburb ")  # Prompt message to instruct the user to enter their suburb.
+    question = ("\nPlease enter your suburb ")  # Prompt message to instruct the user to enter their suburb.
     customer_details['suburb'] = check_string(question)  # Calls the 'check_string' function to get and validate the user's suburb. The suburb is stored in the 'customer_details' dictionary under the key 'suburb'.
     print (customer_details['suburb'])  # Prints the user's suburb.
 
@@ -197,13 +197,13 @@ def order_skincare():
     NUM_LOW = 1  # The lowest valid number of skincare products to be ordered.
     NUM_HIGH = 12  # The highest valid number of skincare products to be ordered.
     question = (f"Enter a number between {NUM_LOW} and {NUM_HIGH} ")  # Prompt message to instruct the user to enter the number of skincare products to be ordered.
-    print("How many skincare products would you like to order? ")
+    print("\nHow many skincare products would you like to order? ")
     num_skincare = valid_int(NUM_LOW, NUM_HIGH, question)  # Calls the 'valid_int' function to get and validate the number of skincare products to be ordered.
 
 # choose skincare from the menu
     for item in range(num_skincare):  # Iterate over the range from 0 to num_skincare-1.
         while num_skincare > 0:  # Loop until the desired number of skincare products have been ordered.
-            print("Please choose your skincare product by entering the number of the skincare from the menu: ")
+            print("\nPlease choose your skincare product by entering the number of the skincare from the menu: ")
             question = (f"Enter a number between {NUM_LOW} and {NUM_HIGH} ")
 
             skincare_ordered = valid_int(NUM_LOW, NUM_HIGH, question)  # Calls the 'valid_int' function to get and validate the chosen skincare product number.
@@ -275,9 +275,9 @@ def confirm_cancel():
     question = (f"Enter a number between {LOW} and {HIGH} ")
     
     # Print messages to ask the user to confirm or cancel the order.
-    print("Please Confirm Your Order")
-    print("To confirm your order, please enter 1 ")
-    print("To cancel your order, please enter 2 ")
+    print("\nPlease Confirm Your Order")
+    print("  To confirm your order, please enter 1 ")
+    print("  To cancel your order, please enter 2 ")
 
     # Get user input for confirmation or cancellation and validate it as an integer between LOW and HIGH.
     confirm = valid_int(LOW, HIGH, question)
@@ -285,7 +285,7 @@ def confirm_cancel():
     # Check if the user confirmed the order (chose 1).
     if confirm == 1:
         # Print a message confirming the order.
-        print("Order Confirmed")
+        print("\nOrder Confirmed")
         print("Your order has been sent to our team and will be delivered to you as soon as possible!")
         # Call the new_exit function to offer the option to start a new order or exit the bot.
         new_exit()
@@ -293,7 +293,7 @@ def confirm_cancel():
     # Check if the user canceled the order (chose 2).
     elif confirm == 2:
         # Print a message indicating that the order has been canceled.
-        print("Your order has been Cancelled")
+        print("\nYour order has been Cancelled")
         print("You may restart your order or exit the BOT")
         # Call the new_exit function to offer the option to start a new order or exit the bot.
         new_exit()
@@ -307,7 +307,7 @@ def new_exit():
     question = (f"Enter a number between {LOW} and {HIGH} ")
     
     # Print messages to ask the user if they want to start another order or exit the bot.
-    print("Do you want to start another order or exit? ")
+    print("\nDo you want to start another order or exit? ")
     print("  To start another order, please enter 1 ")
     print("  To exit the bot, please enter 2 ")
 
@@ -317,7 +317,7 @@ def new_exit():
     # Check if the user wants to start a new order (chose 1).
     if confirm == 1:
         # Print a message indicating the choice to start a new order.
-        print("New Order")
+        print("\nNew Order")
         # Clear the order_list, order_cost, and customer_details lists/dictionary for a fresh order.
         order_list.clear()
         order_cost.clear()
@@ -328,7 +328,7 @@ def new_exit():
     # Check if the user wants to exit the bot (chose 2).
     elif confirm == 2:
         # Print a message indicating the choice to exit the bot.
-        print("Exit")
+        print("\nExit")
         # Clear the order_list, order_cost, and customer_details lists/dictionary.
         order_list.clear()
         order_cost.clear()
