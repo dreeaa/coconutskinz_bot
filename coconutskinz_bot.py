@@ -119,8 +119,8 @@ def order_type():
     HIGH = 2
     question = (f"Enter a number between {LOW} and {HIGH} ")
     print("Do you want your order delivered or would you like to do click and collect? ")
-    print(" For click and collect enter 1 ")
-    print(" For delivery enter 2 ")
+    print("  For click and collect enter 1 ")
+    print("  For delivery enter 2 ")
 
     delivery = valid_int(LOW, HIGH, question)
     if delivery == 1:
