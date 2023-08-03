@@ -54,31 +54,32 @@ def valid_int(LOW, HIGH, question):
 
     while True: 
         try:
-            num = int(input(question))
-            if num >= LOW and num <= HIGH:
-                return num
+            num = int(input(question))  # Asks the user to input an integer and stores it in the variable 'num'.
+            if num >= LOW and num <= HIGH:  # Checks if the input integer is within the specified range.
+                return num  # If the input is valid, returns the integer 'num' to the calling code.
             else: 
-                print(f"Number must be between {LOW} and {HIGH}")
+                print(f"Number must be between {LOW} and {HIGH}")  # If the input is not within the specified range, prints an error message.
 
         except ValueError:
-            print("That is not a valid number")
+            print("That is not a valid number")  # If the input is not a valid integer, prints an error message.
 
 #validates inputs to check if they are an integer with 7 to 10 digits
 def check_phone(question, PH_LOW, PH_HIGH):
     while True:
         try:
-            num = int(input(question))
+            num = int(input(question))  # Asks the user to input an integer and stores it in the variable 'num'.
             test_num = num
             count = 0
-            while test_num > 0:
-                test_num = test_num//10
-                count = count+1
-            if count >= PH_LOW and count <= PH_HIGH:
-                return num
+            while test_num > 0:  # Counts the number of digits in the input integer.
+                test_num = test_num // 10
+                count = count + 1
+            if count >= PH_LOW and count <= PH_HIGH:  # Checks if the count of digits is within the specified range.
+                return num  # If the input has the correct number of digits, returns the integer 'num' to the calling code.
             else:
-                print("NZ phone numbers have between 7 and 10 digits ")
+                print("NZ phone numbers have between 7 and 10 digits ")  # If the input has an invalid number of digits, prints an error message.
         except ValueError:
-            print("Please enter a number ")
+            print("Please enter a number ")  # If the input is not a valid integer, prints an error message.
+
 
 
 
