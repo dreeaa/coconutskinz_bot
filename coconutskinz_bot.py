@@ -115,93 +115,106 @@ def welcome():
 
 #menu for click and collect or delivery
 def order_type():
-    del_pick = ""
-    LOW = 1
-    HIGH = 2
-    question = (f"Enter a number between {LOW} and {HIGH} ")
-    print("Do you want your order delivered or would you like to do click and collect? ")
-    print("  For click and collect enter 1 ")
-    print("  For delivery enter 2 ")
+    del_pick = ""  # Initialize a variable 'del_pick' to store the delivery/pickup option.
 
-    delivery = valid_int(LOW, HIGH, question)
-    if delivery == 1:
-        print("Click and collect")
-        del_pick = "pickup"
-        pickup_info()
+    LOW = 1  # A constant representing the lower bound for user input.
+    HIGH = 2  # A constant representing the upper bound for user input.
 
-    elif delivery == 2:
-        print("Delivery")
-        del_pick = "delivery"
-        delivery_info()
+    question = (f"Enter a number between {LOW} and {HIGH} ")  # Prompt message to instruct the user to enter a number between 'LOW' and 'HIGH'.
 
-    return del_pick
+    print("Do you want your order delivered or would you like to do click and collect? ")  # Prints a message to ask the user about their delivery preference.
+    print("  For click and collect enter 1 ")  # Prints the option for click and collect.
+    print("  For delivery enter 2 ")  # Prints the option for delivery.
+
+    delivery = valid_int(LOW, HIGH, question)  # Calls the 'valid_int' function to get a valid integer input from the user between 'LOW' and 'HIGH'.
+
+    if delivery == 1:  # If the user chose 1 (click and collect).
+        print("Click and collect")  # Prints a message indicating that click and collect option is chosen.
+        del_pick = "pickup"  # Set 'del_pick' to "pickup" to represent click and collect.
+        pickup_info()  # Calls the 'pickup_info' function to get additional information for click and collect.
+
+    elif delivery == 2:  # If the user chose 2 (delivery).
+        print("Delivery")  # Prints a message indicating that delivery option is chosen.
+        del_pick = "delivery"  # Set 'del_pick' to "delivery" to represent delivery.
+        delivery_info()  # Calls the 'delivery_info' function to get delivery information.
+
+    return del_pick  # Returns the chosen delivery/pickup option ('del_pick') to be used in the rest of the program.
 
 
 #click and collect information 
 def pickup_info():
-    question = ("Please enter your name ")
-    customer_details['name'] = check_string(question)
-    #print (customer_details['name'])
+    question = ("Please enter your name ")  # Prompt message to instruct the user to enter their name.
+    customer_details['name'] = check_string(question)  # Calls the 'check_string' function to get and validate the user's name. The name is stored in the 'customer_details' dictionary under the key 'name'.
+    #print (customer_details['name'])  # Uncommenting this line will print the user's name, but it seems to be commented out for debugging purposes.
 
-    question = ("Please enter your phone number ")
-    customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
-    #print (customer_details['phone'])
-    print(customer_details)
+    question = ("Please enter your phone number ")  # Prompt message to instruct the user to enter their phone number.
+    customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)  # Calls the 'check_phone' function to get and validate the user's phone number. The phone number is stored in the 'customer_details' dictionary under the key 'phone'.
+    #print (customer_details['phone'])  # Uncommenting this line will print the user's phone number, but it seems to be commented out for debugging purposes.
+    print(customer_details)  # Prints the 'customer_details' dictionary containing the user's name and phone number.
 
 #delivery information - name address and phone
 #customers name
 def delivery_info():
-    question = ("Please enter your name ")
-    customer_details['name'] = check_string(question)
-    print (customer_details['name'])
+    question = ("Please enter your name ")  # Prompt message to instruct the user to enter their name.
+    customer_details['name'] = check_string(question)  # Calls the 'check_string' function to get and validate the user's name. The name is stored in the 'customer_details' dictionary under the key 'name'.
+    print (customer_details['name'])  # Prints the user's name.
+
 #customers phone number
-    question = ("Please enter your phone number ")
-    customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
-    print (customer_details['phone'])
+    question = ("Please enter your phone number ")  # Prompt message to instruct the user to enter their phone number.
+    customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)  # Calls the 'check_phone' function to get and validate the user's phone number. The phone number is stored in the 'customer_details' dictionary under the key 'phone'.
+    print (customer_details['phone'])  # Prints the user's phone number.
+
 #customers address
-    question = ("Please enter your house number ")
-    customer_details['house'] = not_blank(question)
-    print (customer_details['house'])
+    question = ("Please enter your house number ")  # Prompt message to instruct the user to enter their house number.
+    customer_details['house'] = not_blank(question)  # Calls the 'not_blank' function to get and validate the user's house number. The house number is stored in the 'customer_details' dictionary under the key 'house'.
+    print (customer_details['house'])  # Prints the user's house number.
+
 #customers address
-    question = ("Please enter your street name ")
-    customer_details['street'] = check_string(question)
-    print (customer_details['street'])
+    question = ("Please enter your street name ")  # Prompt message to instruct the user to enter their street name.
+    customer_details['street'] = check_string(question)  # Calls the 'check_string' function to get and validate the user's street name. The street name is stored in the 'customer_details' dictionary under the key 'street'.
+    print (customer_details['street'])  # Prints the user's street name.
+
 #customers address
-    question = ("Please enter your suburb ")
-    customer_details['suburb'] = check_string(question)
-    print (customer_details['suburb'])
+    question = ("Please enter your suburb ")  # Prompt message to instruct the user to enter their suburb.
+    customer_details['suburb'] = check_string(question)  # Calls the 'check_string' function to get and validate the user's suburb. The suburb is stored in the 'customer_details' dictionary under the key 'suburb'.
+    print (customer_details['suburb'])  # Prints the user's suburb.
+
 
 #skincare menu 
 def menu():
-    number_skincare = 12
+    number_skincare = 12  # Total number of skincare products available in the menu.
 
-    for count in range (number_skincare):
+    for count in range (number_skincare):  # Iterate over the range from 0 to number_skincare-1.
+        # Print the name and price of each skincare product in the format "Number Name Price".
+        # The format {:.2f} ensures that the price is displayed with two decimal places.
         print("{} {} ${:.2f}".format(count+1, skincare_names[count], skincare_prices[count]))
 
 #skincare order - from menu - print each skincare ordered with cost
 def order_skincare():
 
 # ask for the total number of skincare for the order
-    num_skincare = 0
-    NUM_LOW = 1 
-    NUM_HIGH = 12
-    question = (f"Enter a number between {NUM_LOW} and {NUM_HIGH} ")
+    num_skincare = 0  # Initialize the variable to store the total number of skincare products to be ordered.
+    NUM_LOW = 1  # The lowest valid number of skincare products to be ordered.
+    NUM_HIGH = 12  # The highest valid number of skincare products to be ordered.
+    question = (f"Enter a number between {NUM_LOW} and {NUM_HIGH} ")  # Prompt message to instruct the user to enter the number of skincare products to be ordered.
     print("How many skincare products would you like to order? ")
-    num_skincare = valid_int(NUM_LOW, NUM_HIGH, question)
+    num_skincare = valid_int(NUM_LOW, NUM_HIGH, question)  # Calls the 'valid_int' function to get and validate the number of skincare products to be ordered.
 
 # choose skincare from the menu
-    for item in range(num_skincare):
-        while num_skincare > 0:
+    for item in range(num_skincare):  # Iterate over the range from 0 to num_skincare-1.
+        while num_skincare > 0:  # Loop until the desired number of skincare products have been ordered.
             print("Please choose your skincare product by entering the number of the skincare from the menu: ")
             question = (f"Enter a number between {NUM_LOW} and {NUM_HIGH} ")
 
-
-            skincare_ordered = valid_int(NUM_LOW, NUM_HIGH, question)
-            skincare_ordered -= 1
-            order_list.append(skincare_names[skincare_ordered])
-            order_cost.append(skincare_prices[skincare_ordered])
+            skincare_ordered = valid_int(NUM_LOW, NUM_HIGH, question)  # Calls the 'valid_int' function to get and validate the chosen skincare product number.
+            skincare_ordered -= 1  # Decrement by 1 to get the index in the list.
+            order_list.append(skincare_names[skincare_ordered])  # Adds the chosen skincare product name to the 'order_list' list.
+            order_cost.append(skincare_prices[skincare_ordered])  # Adds the chosen skincare product price to the 'order_cost' list.
+            # Prints the name and price of the chosen skincare product in the format "Name Price".
+            # The format {:.2f} ensures that the price is displayed with two decimal places.
             print("{} ${:.2f}".format(skincare_names[skincare_ordered], skincare_prices[skincare_ordered]))
-            num_skincare -= 1
+            num_skincare -= 1  # Decrease the number of skincare products left to be ordered by 1 in each iteration.
+
 
 
 
